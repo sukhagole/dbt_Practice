@@ -36,3 +36,13 @@ models:
     # Applies to all files under models/example/
     example:
       materialized: view
+
+
+
+
+snapshots:
+  jaffle_shop:                                
+  +target_schema: snapshots
+  
+
+
