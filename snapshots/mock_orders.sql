@@ -14,7 +14,7 @@
 			
 	}}
 	
-	select * from analytics.{{ target.schema}}.mock_orders
+	select * from analytics.development.mock_orders;
 	
 	{% endsnapshot %}
 	

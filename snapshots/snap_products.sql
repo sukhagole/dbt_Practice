@@ -1,16 +1,19 @@
-{% snapshot orders_snapshot %}
+{ % snapshot mock_orders %} 
 
-{{
-    config(
-      target_database='analytics',
-      target_schema='snapshots',
-      unique_key='id',
+    {% set new_schema = target.schema _ '_snapshot' %}
 
-      strategy='timestamp',
-      updated_at='updated_at',
-    )
-}}
+	{{ 
+		config(
+			target_database ='analytics',				
+			target_schema = 'new_schema',							
+			unique_key ='order_id',
 
-select * from {{ source('jaffle_shop', 'orders') }}
+			strategy ='timestamp',												
+			updated_at ='updated_at',
+			)
 
-{% endsnapshot %}
+	}}
+
+	select * from analytics.development.{{ target.schema}}.mock_orders
+
+	{% endsnapshot %}
